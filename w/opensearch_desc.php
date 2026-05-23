@@ -1,0 +1,1 @@
+config/initialise/entrypoints/opensearch_desc.php

@@ -1,0 +1,8 @@
+# Uploaded files
+/images/
+
+# Claude Code session state
+/.claude/
+
+# Per-version lock / generated files
+/composer.lock

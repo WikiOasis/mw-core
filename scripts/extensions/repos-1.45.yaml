@@ -1,0 +1,330 @@
+# repos-1.45.yaml — Extension and skin repositories for MediaWiki 1.45
+#
+# Each entry specifies:
+#   path    — install path relative to the MediaWiki version root
+#   url     — git remote URL
+#   branch  — branch to check out; use the special token _version_ to
+#              auto-expand to REL1_45 for MediaWiki 1.45
+#
+# The _version_ token expands to REL<MAJOR>_<MINOR> based on the version
+# key in this filename (e.g. repos-1.46.yaml → REL1_46).
+
+_version_: REL1_45
+
+extensions:
+  - path: extensions/3D
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/3D
+    branch: _version_
+
+  - path: extensions/AbuseFilter
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/AbuseFilter
+    branch: _version_
+
+  - path: extensions/AdminLinks
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/AdminLinks
+    branch: _version_
+
+  - path: extensions/AdvancedSearch
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/AdvancedSearch
+    branch: _version_
+
+  - path: extensions/AntiSpoof
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/AntiSpoof
+    branch: _version_
+
+  - path: extensions/ArticlePlaceholder
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/ArticlePlaceholder
+    branch: _version_
+
+  - path: extensions/AWS
+    url: https://github.com/edwardspec/mediawiki-aws-s3
+    branch: master
+
+  - path: extensions/Babel
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/Babel
+    branch: _version_
+
+  - path: extensions/BetaFeatures
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/BetaFeatures
+    branch: _version_
+
+  - path: extensions/Bootstrap
+    url: https://github.com/cmln/chameleon
+    branch: master
+
+  - path: extensions/Cargo
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/Cargo
+    branch: _version_
+
+  - path: extensions/CategoryTree
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/CategoryTree
+    branch: _version_
+
+  - path: extensions/CentralAuth
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/CentralAuth
+    branch: _version_
+
+  - path: extensions/CentralNotice
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/CentralNotice
+    branch: _version_
+
+  - path: extensions/CFCachePurge
+    url: https://github.com/WikiOasis/CFCachePurge
+    branch: main
+
+  - path: extensions/CheckUser
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUser
+    branch: _version_
+
+  - path: extensions/Cite
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/Cite
+    branch: _version_
+
+  - path: extensions/CiteThisPage
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/CiteThisPage
+    branch: _version_
+
+  - path: extensions/cldr
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/cldr
+    branch: _version_
+
+  - path: extensions/CodeEditor
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/CodeEditor
+    branch: _version_
+
+  - path: extensions/CodeMirror
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/CodeMirror
+    branch: _version_
+
+  - path: extensions/ConfirmEdit
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/ConfirmEdit
+    branch: _version_
+
+  - path: extensions/CookieWarning
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/CookieWarning
+    branch: _version_
+
+  - path: extensions/CreateWiki
+    url: https://github.com/miraheze/CreateWiki
+    branch: master
+
+  - path: extensions/DataDump
+    url: https://github.com/miraheze/DataDump
+    branch: master
+
+  - path: extensions/DarkMode
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/DarkMode
+    branch: _version_
+
+  - path: extensions/DiscordNotifications
+    url: https://github.com/kulttuuri/discord-mediawiki
+    branch: master
+
+  - path: extensions/DismissableSiteNotice
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/DismissableSiteNotice
+    branch: _version_
+
+  - path: extensions/Echo
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/Echo
+    branch: _version_
+
+  - path: extensions/EventLogging
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/EventLogging
+    branch: _version_
+
+  - path: extensions/GlobalBlocking
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/GlobalBlocking
+    branch: _version_
+
+  - path: extensions/GlobalCssJs
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/GlobalCssJs
+    branch: _version_
+
+  - path: extensions/GlobalPreferences
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/GlobalPreferences
+    branch: _version_
+
+  - path: extensions/GlobalUserPage
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/GlobalUserPage
+    branch: _version_
+
+  - path: extensions/ImportDump
+    url: https://github.com/miraheze/ImportDump
+    branch: master
+
+  - path: extensions/Interwiki
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/Interwiki
+    branch: _version_
+
+  - path: extensions/InterwikiDispatcher
+    url: https://github.com/miraheze/InterwikiDispatcher
+    branch: master
+
+  - path: extensions/JsonConfig
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/JsonConfig
+    branch: _version_
+
+  - path: extensions/Kartographer
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/Kartographer
+    branch: _version_
+
+  - path: extensions/LoginNotify
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/LoginNotify
+    branch: _version_
+
+  - path: extensions/ManageWiki
+    url: https://github.com/miraheze/ManageWiki
+    branch: master
+
+  - path: extensions/Maps
+    url: https://github.com/ProfessionalWiki/Maps
+    branch: master
+
+  - path: extensions/MediaModeration
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/MediaModeration
+    branch: _version_
+
+  - path: extensions/MirahezeMagic
+    url: https://github.com/miraheze/MirahezeMagic
+    branch: master
+
+  - path: extensions/MinervaNeue
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/MinervaNeue
+    branch: _version_
+
+  - path: extensions/MobileFrontend
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/MobileFrontend
+    branch: _version_
+
+  - path: extensions/NativeSvgHandler
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/NativeSvgHandler
+    branch: _version_
+
+  - path: extensions/Nuke
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/Nuke
+    branch: _version_
+
+  - path: extensions/OATHAuth
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/OATHAuth
+    branch: _version_
+
+  - path: extensions/OAuth
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/OAuth
+    branch: _version_
+
+  - path: extensions/OOJSPlus
+    url: https://github.com/hallowelt/mwstake-mediawiki-component-commonuserinterface
+    branch: master
+
+  - path: extensions/ParserFunctions
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/ParserFunctions
+    branch: _version_
+
+  - path: extensions/ParserMigration
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/ParserMigration
+    branch: _version_
+
+  - path: extensions/QuickInstantCommons
+    url: https://github.com/nicowillis/QuickInstantCommons
+    branch: main
+
+  - path: extensions/RemovePII
+    url: https://github.com/miraheze/RemovePII
+    branch: master
+
+  - path: extensions/RequestCustomDomain
+    url: https://github.com/miraheze/RequestCustomDomain
+    branch: master
+
+  - path: extensions/Scribunto
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/Scribunto
+    branch: _version_
+
+  - path: extensions/SocialProfile
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/SocialProfile
+    branch: _version_
+
+  - path: extensions/SpamBlacklist
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/SpamBlacklist
+    branch: _version_
+
+  - path: extensions/SyntaxHighlight_GeSHi
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/SyntaxHighlight_GeSHi
+    branch: _version_
+
+  - path: extensions/TextExtracts
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/TextExtracts
+    branch: _version_
+
+  - path: extensions/TimedMediaHandler
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/TimedMediaHandler
+    branch: _version_
+
+  - path: extensions/TitleBlacklist
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleBlacklist
+    branch: _version_
+
+  - path: extensions/TorBlock
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/TorBlock
+    branch: _version_
+
+  - path: extensions/UrlShortener
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/UrlShortener
+    branch: _version_
+
+  - path: extensions/VisualEditor
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/VisualEditor
+    branch: _version_
+
+  - path: extensions/WebAuthn
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/WebAuthn
+    branch: _version_
+
+  - path: extensions/WikiDiscover
+    url: https://github.com/miraheze/WikiDiscover
+    branch: master
+
+  - path: extensions/WikiEditor
+    url: https://gerrit.wikimedia.org/r/mediawiki/extensions/WikiEditor
+    branch: _version_
+
+  - path: extensions/WikiOasisMagic
+    url: https://github.com/WikiOasis/WikiOasisMagic
+    branch: main
+
+  - path: extensions/WikiSEO
+    url: https://github.com/octfx/wiki-seo
+    branch: _version_
+
+  - path: extensions/Wikibase
+    url: https://github.com/wikimedia/Wikibase
+    branch: _version_
+
+skins:
+  - path: skins/Citizen
+    url: https://github.com/StarCitizenTools/mediawiki-skins-Citizen
+    branch: main
+
+  - path: skins/CologneBlue
+    url: https://gerrit.wikimedia.org/r/mediawiki/skins/CologneBlue
+    branch: _version_
+
+  - path: skins/MinervaNeue
+    url: https://gerrit.wikimedia.org/r/mediawiki/skins/MinervaNeue
+    branch: _version_
+
+  - path: skins/Modern
+    url: https://gerrit.wikimedia.org/r/mediawiki/skins/Modern
+    branch: _version_
+
+  - path: skins/MonoBook
+    url: https://gerrit.wikimedia.org/r/mediawiki/skins/MonoBook
+    branch: _version_
+
+  - path: skins/Timeless
+    url: https://gerrit.wikimedia.org/r/mediawiki/skins/Timeless
+    branch: _version_
+
+  - path: skins/Vector
+    url: https://gerrit.wikimedia.org/r/mediawiki/skins/Vector
+    branch: _version_

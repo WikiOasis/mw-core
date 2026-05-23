@@ -1,0 +1,1 @@
+config/initialise/entrypoints/thumb.php
