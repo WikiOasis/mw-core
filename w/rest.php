@@ -1,1 +1,1 @@
-config/initialise/entrypoints/rest.php
+/srv/mediawiki/config/initialise/entrypoints/rest.php

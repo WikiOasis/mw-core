@@ -1,1 +1,1 @@
-config/initialise/entrypoints/opensearch_desc.php
+/srv/mediawiki/config/initialise/entrypoints/opensearch_desc.php

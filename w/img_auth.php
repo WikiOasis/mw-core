@@ -1,1 +1,1 @@
-config/initialise/entrypoints/img_auth.php
+/srv/mediawiki/config/initialise/entrypoints/img_auth.php

@@ -1,1 +1,1 @@
-config/initialise/entrypoints/load.php
+/srv/mediawiki/config/initialise/entrypoints/load.php

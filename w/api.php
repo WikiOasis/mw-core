@@ -1,1 +1,1 @@
-config/initialise/entrypoints/api.php
+/srv/mediawiki/config/initialise/entrypoints/api.php

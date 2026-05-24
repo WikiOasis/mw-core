@@ -1,1 +1,1 @@
-config/initialise/entrypoints/sitemap.php
+/srv/mediawiki/config/initialise/entrypoints/sitemap.php

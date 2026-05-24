@@ -1,1 +1,1 @@
-config/initialise/entrypoints/thumb.php
+/srv/mediawiki/config/initialise/entrypoints/thumb.php
