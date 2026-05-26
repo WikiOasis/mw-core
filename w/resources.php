@@ -1,0 +1,1 @@
+/srv/mediawiki/config/initialise/entrypoints/resources.php
