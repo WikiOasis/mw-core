@@ -930,7 +930,7 @@
       branch: master
 
     - path: extensions/QuickInstantCommons
-      url: https://github.com/nicowillis/QuickInstantCommons
+      url: https://github.com/wikimedia/mediawiki-extensions-QuickInstantCommons
       branch: main
 
     - path: extensions/Quiz
