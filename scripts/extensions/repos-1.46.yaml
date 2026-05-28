@@ -1460,7 +1460,7 @@
 
     - path: skins/Lakeus
       url: https://github.com/lakejason0/mediawiki-skins-Lakeus
-      branch: _version_
+      branch: master
 
     - path: skins/Mask
       url: https://github.com/wikimedia/mediawiki-skins-Mask
