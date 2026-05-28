@@ -1,0 +1,16 @@
+# patches-1.45.yaml — Patches to apply to extensions/skins for MediaWiki 1.45
+#
+# Each entry specifies:
+#   path    — path of the extension/skin relative to the MediaWiki version root
+#             (e.g. extensions/SomeExtension)
+#   patch   — filename of the patch file under scripts/extensions/patches/
+#   description — human-readable description of the patch
+#
+# Patch files must be in unified diff format (git format-patch output).
+# They are applied with `git apply` from within the target directory.
+
+patches: []
+  # Example:
+  # - path: extensions/SomeExtension
+  #   patch: SomeExtension-fix-something.patch
+  #   description: Fix something broken in upstream
