@@ -164,6 +164,10 @@
     - path: extensions/CiteThisPage
       url: https://github.com/wikimedia/mediawiki-extensions-CiteThisPage
       branch: _version_
+  
+    - path: extensions/Citoid
+      url: https://github.com/wikimedia/mediawiki-extensions-Citoid
+      branch: _version_
 
     - path: skins/Citizen
       url: https://github.com/StarCitizenTools/mediawiki-skins-Citizen
