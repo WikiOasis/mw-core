@@ -16,7 +16,9 @@
 #   6. Fetches and installs extensions/skins defined in
 #      scripts/extensions/repos-<version>.yaml (via fetch-repos.py)
 #   7. Applies any patches listed in scripts/extensions/patches-<version>.yaml
-#   8. Runs maintenance/update.php for all wikis assigned to this version
+#   8. Runs composer install (as www-data) for every installed extension/skin
+#      that ships a composer.json
+#   9. Runs maintenance/update.php for all wikis assigned to this version
 #      (you must answer the prompts yourself or pass --quick)
 #
 # After this script completes, edit config/wikiVersions.php to assign wikis
@@ -120,6 +122,18 @@ fi
 
 # Set ownership
 chown -R www-data:www-data "$VERSION_DIR"
+
+# ── 7. Composer install for extensions & skins ───────────────────────────────
+# Run as www-data (ownership is already set above) so that any generated
+# vendor/ directories are owned correctly. Only directories that ship a
+# composer.json need this step.
+echo "--> Running composer install for extensions and skins..."
+for dir in "$VERSION_DIR/extensions"/* "$VERSION_DIR/skins"/*; do
+    if [[ -f "$dir/composer.json" ]]; then
+        echo "  composer install in ${dir#$VERSION_DIR/}"
+        sudo -u www-data composer install --no-dev --prefer-dist --working-dir="$dir"
+    fi
+done
 
 echo ""
 echo "==> MediaWiki $VERSION installed at $VERSION_DIR"
