@@ -133,8 +133,9 @@ else
     echo "    (no patches file found at $PATCHES_FILE — skipping)"
 fi
 
-# Set ownership
-chown -R www-data:www-data "$VERSION_DIR"
+# Set ownership: files belong to www-data with the ops group so operators can
+# manage the installed extensions/skins.
+chown -R www-data:ops "$VERSION_DIR"
 
 # ── 7. Composer install for extensions & skins ───────────────────────────────
 # Run as www-data (ownership is already set above) so that any generated
