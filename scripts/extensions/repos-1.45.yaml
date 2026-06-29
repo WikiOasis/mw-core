@@ -1340,6 +1340,10 @@
     - path: extensions/VoteNY
       url: https://github.com/wikimedia/mediawiki-extensions-VoteNY
       branch: _version_
+  
+    - path: extensions/WebChat
+      url: https://github.com/wikimedia/mediawiki-extensions-WebChat.git
+      branch: _version_
 
     - path: extensions/WikiCategoryTagCloud
       url: https://github.com/wikimedia/mediawiki-extensions-WikiCategoryTagCloud
