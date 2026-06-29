@@ -7,10 +7,15 @@
 # Example:
 #   ./init-version.sh 1.46
 #
+# Files are installed into the STAGING tree (/srv/mediawiki-staging) so the new
+# version can be tested before it is promoted to production (/srv/mediawiki).
+# All symlinks created here point at /srv/mediawiki paths (never the staging
+# tree) so the staged install matches production exactly once promoted.
+#
 # What this script does:
-#   1. Creates /srv/mediawiki/versions/<version>/
+#   1. Creates /srv/mediawiki-staging/versions/<version>/
 #   2. Clones MediaWiki core from Wikimedia Gerrit at the release branch
-#   3. Creates the shared symlinks (LocalSettings.php, config/)
+#   3. Creates the shared symlinks (LocalSettings.php, config/) → /srv/mediawiki
 #   4. Creates a per-version localisation cache directory
 #   5. Runs composer install
 #   6. Fetches and installs extensions/skins defined in
@@ -27,10 +32,16 @@
 
 set -euo pipefail
 
-FARM_ROOT="/srv/mediawiki"
+# Files are installed into the staging tree first; they are tested there and
+# only later promoted to the production tree. Every symlink, however, targets a
+# path under FARM_ROOT (production) so that the staged install is byte-identical
+# to what it will be once promoted — no /srv/mediawiki-staging path ever appears
+# as a symlink target.
+FARM_ROOT="/srv/mediawiki"            # production farm root (all symlink targets live here)
+STAGING_ROOT="/srv/mediawiki-staging" # where files are physically installed
 SCRIPTS_DIR="$FARM_ROOT/scripts"
-VERSIONS_DIR="$FARM_ROOT/versions"
-CONFIG_DIR="$FARM_ROOT/config"
+VERSIONS_DIR="$STAGING_ROOT/versions" # install location (staging)
+CONFIG_DIR="$FARM_ROOT/config"        # shared config — symlink target, production path
 
 VERSION="${1:-}"
 if [[ -z "$VERSION" ]]; then
@@ -68,9 +79,11 @@ ln -s "$CONFIG_DIR/LocalSettings.php" "$VERSION_DIR/LocalSettings.php"
 ln -s "$CONFIG_DIR"                   "$VERSION_DIR/config"
 
 # ── 3. Per-version localisation cache ─────────────────────────────────────────
+# Created in the staging tree alongside the version files; it is promoted to
+# production together with the version directory.
 echo "--> Creating localisation cache directory..."
-mkdir -p "$FARM_ROOT/cache/$VERSION"
-chown www-data:www-data "$FARM_ROOT/cache/$VERSION"
+mkdir -p "$STAGING_ROOT/cache/$VERSION"
+chown www-data:www-data "$STAGING_ROOT/cache/$VERSION"
 
 # ── 4. Composer ───────────────────────────────────────────────────────────────
 echo "--> Running composer install..."
