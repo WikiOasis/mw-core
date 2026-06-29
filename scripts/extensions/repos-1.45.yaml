@@ -1392,6 +1392,10 @@
     - path: extensions/WikimediaIncubator
       url: https://github.com/wikimedia/mediawiki-extensions-WikimediaIncubator
       branch: _version_
+  
+    - path: extensions/WikiOasisMagic
+      url: https://github.com/WikiOasis/WikiOasisMagic
+      branch: main
 
     - path: extensions/apex
       url: https://github.com/wikimedia/mediawiki-skins-apex
