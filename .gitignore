@@ -1,6 +1,8 @@
 # Uploaded files
 /images/
 
+/versions/
+
 # Claude Code session state
 /.claude/
 
