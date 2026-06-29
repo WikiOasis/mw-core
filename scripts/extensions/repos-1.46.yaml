@@ -1,4 +1,4 @@
-  _version_: REL1_46
+  _version_: REL1_45
 
   extensions:
     - path: extensions/3D
@@ -132,15 +132,15 @@
     - path: extensions/CentralAuth
       url: https://github.com/wikimedia/mediawiki-extensions-CentralAuth
       branch: _version_
-  
-    - path: extensions/CFCachePurge
-      url: https://github.com/WikiOasis/CFCachePurge
-      branch: main
 
     - path: extensions/CentralNotice
       url: https://github.com/wikimedia/mediawiki-extensions-CentralNotice
       branch: _version_
-
+  
+    - path: extensions/CFCachePurge
+      url: https://github.com/WikiOasis/CFCachePurge
+      branch: main
+  
     - path: extensions/CharInsert
       url: https://github.com/wikimedia/mediawiki-extensions-CharInsert
       branch: _version_
@@ -367,6 +367,10 @@
 
     - path: extensions/EmbedVideo
       url: https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo
+      branch: master
+     
+    - path: extensions/EnhancedUpload
+      url: https://github.com/wikimedia/mediawiki-extensions-EnhancedUpload
       branch: master
 
     - path: skins/Evelution
@@ -660,6 +664,10 @@
     - path: extensions/MatomoAnalytics
       url: https://github.com/miraheze/MatomoAnalytics
       branch: main
+  
+    - path: extensions/Maps
+      url: https://github.com/ProfessionalWiki/Maps
+      branch: master
 
     - path: extensions/MediaModeration
       url: https://github.com/wikimedia/mediawiki-extensions-MediaModeration
@@ -963,6 +971,10 @@
 
     - path: extensions/RealMe
       url: https://github.com/wikimedia/mediawiki-extensions-RealMe
+      branch: _version_
+  
+    - path: extensions/RefreshSpecial
+      url: https://gerrit.wikimedia.org/r/mediawiki/extensions/RefreshSpecial
       branch: _version_
 
     - path: skins/Refreshed

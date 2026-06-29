@@ -368,6 +368,10 @@
     - path: extensions/EmbedVideo
       url: https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo
       branch: master
+  
+    - path: extensions/EnhancedUpload
+      url: https://github.com/wikimedia/mediawiki-extensions-EnhancedUpload
+      branch: _version_
 
     - path: skins/Evelution
       url: https://github.com/AWikia/SkinEvelution
@@ -660,6 +664,10 @@
     - path: extensions/MatomoAnalytics
       url: https://github.com/miraheze/MatomoAnalytics
       branch: main
+  
+    - path: extensions/Maps
+      url: https://github.com/ProfessionalWiki/Maps
+      branch: master
 
     - path: extensions/MediaModeration
       url: https://github.com/wikimedia/mediawiki-extensions-MediaModeration
@@ -963,6 +971,10 @@
 
     - path: extensions/RealMe
       url: https://github.com/wikimedia/mediawiki-extensions-RealMe
+      branch: _version_
+  
+    - path: extensions/RefreshSpecial
+      url: https://gerrit.wikimedia.org/r/mediawiki/extensions/RefreshSpecial
       branch: _version_
 
     - path: skins/Refreshed
