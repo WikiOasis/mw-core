@@ -764,6 +764,10 @@
     - path: extensions/NearbyPages
       url: https://github.com/wikimedia/mediawiki-extensions-NearbyPages
       branch: _version_
+  
+    - path: extensions/Network
+      url: https://github.com/ProfessionalWiki/Network.git
+      branch: master
 
     - path: extensions/NewSignupPage
       url: https://github.com/wikimedia/mediawiki-extensions-NewSignupPage
