@@ -136,7 +136,11 @@
     - path: extensions/CentralNotice
       url: https://github.com/wikimedia/mediawiki-extensions-CentralNotice
       branch: _version_
-
+  
+    - path: extensions/CFCachePurge
+      url: https://github.com/WikiOasis/CFCachePurge
+      branch: main
+  
     - path: extensions/CharInsert
       url: https://github.com/wikimedia/mediawiki-extensions-CharInsert
       branch: _version_

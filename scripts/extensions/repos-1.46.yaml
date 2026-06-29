@@ -132,6 +132,10 @@
     - path: extensions/CentralAuth
       url: https://github.com/wikimedia/mediawiki-extensions-CentralAuth
       branch: _version_
+  
+    - path: extensions/CFCachePurge
+      url: https://github.com/WikiOasis/CFCachePurge
+      branch: main
 
     - path: extensions/CentralNotice
       url: https://github.com/wikimedia/mediawiki-extensions-CentralNotice
