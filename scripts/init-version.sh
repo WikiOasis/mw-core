@@ -95,7 +95,8 @@ if [[ -f "$REPOS_FILE" ]]; then
     echo "--> Fetching extensions and skins from $REPOS_FILE..."
     python3 "$SCRIPTS_DIR/extensions/fetch-repos.py" \
         --repos "$REPOS_FILE" \
-        --target "$VERSION_DIR"
+        --target "$VERSION_DIR" \
+        --update
 else
     echo "    (no repos file found at $REPOS_FILE — skipping extension install)"
 fi
