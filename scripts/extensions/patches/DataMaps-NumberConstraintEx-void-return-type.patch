@@ -1,0 +1,13 @@
+diff --git a/includes/Content/JsonSchemaEx/NumberConstraintEx.php b/includes/Content/JsonSchemaEx/NumberConstraintEx.php
+index e41fc0a..4928060 100644
+--- a/includes/Content/JsonSchemaEx/NumberConstraintEx.php
++++ b/includes/Content/JsonSchemaEx/NumberConstraintEx.php
+@@ -16,7 +16,7 @@ class NumberConstraintEx extends NumberConstraint {
+     /**
+      * {@inheritdoc}
+      */
+-    public function check( &$element, $schema = null, ?JsonPointer $path = null, $i = null ) {
++    public function check( &$element, $schema = null, ?JsonPointer $path = null, $i = null ): void {
+         // Verify minimum
+         if ( isset( $schema->exclusiveMinimum ) && filter_var( $schema->exclusiveMinimum, FILTER_VALIDATE_BOOLEAN ) ) {
+             // Draft 4 schema
