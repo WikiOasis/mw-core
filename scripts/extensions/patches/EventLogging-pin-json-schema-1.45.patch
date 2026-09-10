@@ -1,0 +1,12 @@
+diff --git a/composer.json b/composer.json
+index 171a764..af09c18 100644
+--- a/composer.json
++++ b/composer.json
+@@ -21,6 +21,7 @@
+ 	},
+ 	"require": {
+ 		"wikimedia/metrics-platform": "4.2.4",
++		"justinrainbow/json-schema": "5.3.1",
+ 		"ext-json": "*"
+ 	},
+ 	"config": {

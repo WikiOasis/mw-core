@@ -1,0 +1,14 @@
+diff --git a/composer.json b/composer.json
+index 228c0af..ae04db3 100644
+--- a/composer.json
++++ b/composer.json
+@@ -20,7 +20,8 @@
+ 		"phpcs": "phpcs -sp --cache"
+ 	},
+ 	"require": {
+-		"wikimedia/metrics-platform": "4.4.0"
++		"wikimedia/metrics-platform": "4.4.0",
++		"justinrainbow/json-schema": "5.3.4"
+ 	},
+ 	"config": {
+ 		"allow-plugins": {

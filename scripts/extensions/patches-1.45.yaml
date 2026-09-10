@@ -9,7 +9,29 @@
 # Patch files must be in unified diff format (git format-patch output).
 # They are applied with `git apply` from within the target directory.
 
-patches: []
+patches:
+  - path: extensions/EventLogging
+    patch: EventLogging-pin-json-schema-1.45.patch
+    description: >-
+      Pin justinrainbow/json-schema to 5.3.1, the version MediaWiki 1.45 core
+      itself requires. EventLogging requires wikimedia/metrics-platform, which
+      permits "^6.2.1", so composer otherwise resolves json-schema 6.x. Because
+      EventLogging sets load_composer_autoloader, that 6.x copy is prepended to
+      the autoloader and shadows core's 5.3.1 farm-wide. DataMaps subclasses
+      json-schema constraint classes, and from 6.2.1 the parent methods declare
+      ": void", so the override signatures no longer match — an E_COMPILE_ERROR
+      that PHP cannot catch. Neither metrics-platform nor EventLogging uses any
+      6.x-only API, so 5.3.1 resolves and runs cleanly. Fixes MEDIAWIKI-1MB.
+  - path: extensions/DataMaps
+    patch: DataMaps-NumberConstraintEx-void-return-type.patch
+    description: >-
+      Add the ": void" return type to NumberConstraintEx::check() so the
+      override still matches its parent if a json-schema 6.x copy ever reaches
+      the autoloader again. Defence in depth behind the EventLogging pin: it
+      downgrades the uncatchable compile-time fatal to a catchable TypeError
+      raised only for invalid map data. Inert under json-schema 5.3.x, where
+      the parent has no return type declaration and PHP allows the override to
+      add one.
   # Example:
   # - path: extensions/SomeExtension
   #   patch: SomeExtension-fix-something.patch
