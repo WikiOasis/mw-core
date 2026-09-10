@@ -818,8 +818,8 @@
       branch: _version_
 
     - path: extensions/OOJSPlus
-      url: https://github.com/hallowelt/mwstake-mediawiki-component-commonuserinterface
-      branch: master
+      url: https://github.com/wikimedia/mediawiki-extensions-OOJSPlus
+      branch: _version_
 
     - path: extensions/OpenGraphMeta
       url: https://github.com/wikimedia/mediawiki-extensions-OpenGraphMeta
