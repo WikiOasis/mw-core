@@ -104,7 +104,7 @@ fi
 PATCHES_FILE="$SCRIPTS_DIR/extensions/patches-${VERSION}.yaml"
 if [[ -f "$PATCHES_FILE" ]]; then
     echo "--> Applying patches from $PATCHES_FILE..."
-    python3 - <<'PYEOF'
+    PATCHES_FILE="$PATCHES_FILE" VERSION_DIR="$VERSION_DIR" python3 - <<'PYEOF'
 import yaml, subprocess, sys, os
 
 patches_file = os.environ.get('PATCHES_FILE', '')

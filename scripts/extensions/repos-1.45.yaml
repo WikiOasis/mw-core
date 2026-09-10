@@ -279,7 +279,10 @@
 
     - path: extensions/DataMaps
       url: https://github.com/wikimedia/mediawiki-extensions-DataMaps
-      branch: _version_
+      # Upstream has no REL1_45 branch (only REL1_46, master, unstable), so
+      # _version_ would expand to a branch that does not exist and the clone
+      # fails. REL1_46 declares MediaWiki >= 1.43.0, so it runs on 1.45.
+      branch: REL1_46
 
     - path: extensions/DataTransfer
       url: https://github.com/wikimedia/mediawiki-extensions-DataTransfer
