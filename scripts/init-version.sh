@@ -22,7 +22,8 @@
 #      scripts/extensions/repos-<version>.yaml (via fetch-repos.py)
 #   7. Applies any patches listed in scripts/extensions/patches-<version>.yaml
 #   8. Runs composer install (as www-data) for every installed extension/skin
-#      that ships a composer.json
+#      that ships a composer.json, plus npm install for any that ships a
+#      package.json and loads files out of node_modules
 #   9. Runs maintenance/update.php for all wikis assigned to this version
 #      (you must answer the prompts yourself or pass --quick)
 #
@@ -139,13 +140,25 @@ chown -R www-data:ops "$VERSION_DIR"
 
 # ── 7. Composer install for extensions & skins ───────────────────────────────
 # Run as www-data (ownership is already set above) so that any generated
-# vendor/ directories are owned correctly. Only directories that ship a
-# composer.json need this step.
+# vendor/ and node_modules/ directories are owned correctly. Only directories
+# that ship a composer.json need the composer step.
+#
+# A few extensions and skins also register ResourceLoader modules whose
+# localBasePath points into node_modules (Femiwiki, for example, serves styles
+# from node_modules/xeicon and node_modules/@femiwiki/ooui-femiwiki-theme).
+# Without their runtime npm dependencies installed, load.php throws
+# "style file not found or not a file". Install those too, production
+# dependencies only.
 echo "--> Running composer install for extensions and skins..."
 for dir in "$VERSION_DIR/extensions"/* "$VERSION_DIR/skins"/*; do
     if [[ -f "$dir/composer.json" ]]; then
         echo "  composer install in ${dir#$VERSION_DIR/}"
         sudo -u www-data composer install --no-dev --prefer-dist --working-dir="$dir"
+    fi
+
+    if [[ -f "$dir/package.json" ]] && grep -qs 'node_modules' "$dir/extension.json" "$dir/skin.json"; then
+        echo "  npm install in ${dir#$VERSION_DIR/}"
+        sudo -u www-data npm install --omit=dev --no-audit --no-fund --prefix "$dir"
     fi
 done
 
