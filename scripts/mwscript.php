@@ -30,7 +30,7 @@ if ( PHP_SAPI !== 'cli' ) {
 
 define( 'MW_ENTRY_POINT', 'cli' );
 
-require_once '/srv/mediawiki/config/MirahezeFunctions.php';
+require_once '/srv/mediawiki/config/WikiOasisFunctions.php';
 
 // ── Parse arguments ──────────────────────────────────────────────────────────
 
