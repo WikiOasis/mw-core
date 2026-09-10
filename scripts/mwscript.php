@@ -96,7 +96,7 @@ $overallExit = 0;
 $versionsDir  = '/srv/mediawiki/versions';
 
 foreach ( $wikis as $currentWiki ) {
-	$version = MirahezeFunctions::getMediaWikiVersion( $currentWiki );
+	$version = WikiOasisFunctions::getMediaWikiVersion( $currentWiki );
 	$mwPath  = "$versionsDir/$version";
 
 	if ( !is_dir( $mwPath ) ) {
