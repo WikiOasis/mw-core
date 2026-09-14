@@ -5,7 +5,9 @@ fetch-repos.py — Clone or update MediaWiki extensions and skins.
 Reads a repos-<version>.yaml file and ensures each repository is cloned to the
 correct path within a MediaWiki version directory.  Already-cloned repos have
 their branch checked out and pulled; repos not yet cloned are cloned fresh with
---depth=1 for speed.
+--depth=1 for speed.  Submodules are initialised in both paths: Wikibase keeps
+view/lib/wikibase-termbox and four other libraries as submodules, and a tree
+without them fatals at runtime.
 
 Usage:
     python3 fetch-repos.py --repos /srv/mediawiki/scripts/extensions/repos-1.45.yaml
@@ -51,7 +53,8 @@ def git_clone(url: str, dest: str, branch: str, dry_run: bool = False) -> bool:
         return True
     os.makedirs(os.path.dirname(dest), exist_ok=True)
     result = subprocess.run(
-        ['git', 'clone', '--depth=1', '--branch', branch, url, dest],
+        ['git', 'clone', '--depth=1', '--recurse-submodules',
+         '--branch', branch, url, dest],
         capture_output=True, text=True
     )
     if result.returncode != 0:
@@ -69,6 +72,7 @@ def git_update(dest: str, branch: str, dry_run: bool = False) -> bool:
         ['git', 'fetch', '--depth=1', 'origin', branch],
         ['git', 'checkout', branch],
         ['git', 'reset', '--hard', f'origin/{branch}'],
+        ['git', 'submodule', 'update', '--init', '--recursive'],
     ]:
         result = subprocess.run(cmd, cwd=dest, capture_output=True, text=True)
         if result.returncode != 0:
