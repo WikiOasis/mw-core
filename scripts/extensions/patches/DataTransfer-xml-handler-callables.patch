@@ -1,0 +1,121 @@
+--- a/includes/DT_XMLParser.php
++++ b/includes/DT_XMLParser.php
+@@ -34,7 +34,7 @@
+ 			// phpcs:ignore MediaWiki.Usage.ForbiddenFunctions.xml_set_object
+ 			xml_set_object( $parser, $this );
+ 		}
+-		xml_set_element_handler( $parser, "in_start", "" );
++		xml_set_element_handler( $parser, [ $this, 'in_start' ], "" );
+ 
+ 		$offset = 0; // for context extraction on error reporting
+ 		do {
+@@ -62,7 +62,7 @@
+ 		if ( $name != $pages_str ) {
+ 			$this->throwXMLerror( "Expected '$pages_str', got '$name'" );
+ 		}
+-		xml_set_element_handler( $parser, "in_pages", "out_pages" );
++		xml_set_element_handler( $parser, [ $this, 'in_pages' ], [ $this, 'out_pages' ] );
+ 	}
+ 
+ 	function in_pages( $parser, $name, $attribs ) {
+@@ -72,7 +72,7 @@
+ 			$title_str = str_replace( ' ', '_', wfMessage( 'dt_xml_title' )->inContentLanguage()->text() );
+ 			if ( array_key_exists( $title_str, $attribs ) ) {
+ 				$this->mCurPage = new DTWikiPage( $attribs[$title_str] );
+-				xml_set_element_handler( $parser, "in_page", "out_page" );
++				xml_set_element_handler( $parser, [ $this, 'in_page' ], [ $this, 'out_page' ] );
+ 			} else {
+ 				$this->throwXMLerror( "'$title_str' attribute missing for page" );
+ 				return;
+@@ -89,7 +89,7 @@
+ 	}
+ 
+ 	function out_pages( $parser, $name ) {
+-		xml_set_element_handler( $parser, "donothing", "donothing" );
++		xml_set_element_handler( $parser, [ $this, 'donothing' ], [ $this, 'donothing' ] );
+ 	}
+ 
+ 	function in_category( $parser, $name, $attribs ) {
+@@ -97,7 +97,7 @@
+ 		if ( $name == $page_str ) {
+ 			if ( array_key_exists( $title_str, $attribs ) ) {
+ 				$this->mCurPage = new DTWikiPage( $attribs[$title_str] );
+-				xml_set_element_handler( $parser, "in_page", "out_page" );
++				xml_set_element_handler( $parser, [ $this, 'in_page' ], [ $this, 'out_page' ] );
+ 			} else {
+ 				$this->throwXMLerror( "'$title_str' attribute missing for page" );
+ 				return;
+@@ -113,7 +113,7 @@
+ 			$this->throwXMLerror( "Expected </category>, got </$name>" );
+ 			return;
+ 		}
+-		xml_set_element_handler( $parser, "donothing", "donothing" );
++		xml_set_element_handler( $parser, [ $this, 'donothing' ], [ $this, 'donothing' ] );
+ 	}
+ 
+ 	function in_page( $parser, $name, $attribs ) {
+@@ -123,14 +123,14 @@
+ 		if ( $name == $template_str ) {
+ 			if ( array_key_exists( $name_str, $attribs ) ) {
+ 				$this->mCurTemplate = new DTWikiTemplate( $attribs[$name_str] );
+-				xml_set_element_handler( $parser, "in_template", "out_template" );
++				xml_set_element_handler( $parser, [ $this, 'in_template' ], [ $this, 'out_template' ] );
+ 			} else {
+ 				$this->throwXMLerror( "'$name_str' attribute missing for template" );
+ 				return;
+ 			}
+ 		} elseif ( $name == $free_text_str ) {
+-			xml_set_element_handler( $parser, "in_freetext", "out_freetext" );
+-			xml_set_character_data_handler( $parser, "freetext_value" );
++			xml_set_element_handler( $parser, [ $this, 'in_freetext' ], [ $this, 'out_freetext' ] );
++			xml_set_character_data_handler( $parser, [ $this, 'freetext_value' ] );
+ 		} else {
+ 			$this->throwXMLerror( "Expected <$template_str>, got <$name>" );
+ 			return;
+@@ -144,7 +144,7 @@
+ 			return;
+ 		}
+ 		$this->mPages[] = $this->mCurPage;
+-		xml_set_element_handler( $parser, "in_pages", "out_pages" );
++		xml_set_element_handler( $parser, [ $this, 'in_pages' ], [ $this, 'out_pages' ] );
+ 	}
+ 
+ 	function in_template( $parser, $name, $attribs ) {
+@@ -153,8 +153,8 @@
+ 			$name_str = str_replace( ' ', '_', wfMessage( 'dt_xml_name' )->inContentLanguage()->text() );
+ 			if ( array_key_exists( $name_str, $attribs ) ) {
+ 				$this->mCurFieldName = $attribs[$name_str];
+-				xml_set_element_handler( $parser, "in_field", "out_field" );
+-				xml_set_character_data_handler( $parser, "field_value" );
++				xml_set_element_handler( $parser, [ $this, 'in_field' ], [ $this, 'out_field' ] );
++				xml_set_character_data_handler( $parser, [ $this, 'field_value' ] );
+ 			} else {
+ 				$this->throwXMLerror( "'$name_str' attribute missing for field" );
+ 				return;
+@@ -172,7 +172,7 @@
+ 			return;
+ 		}
+ 		$this->mCurPage->addTemplate( $this->mCurTemplate );
+-		xml_set_element_handler( $parser, "in_page", "out_page" );
++		xml_set_element_handler( $parser, [ $this, 'in_page' ], [ $this, 'out_page' ] );
+ 	}
+ 
+ 	function in_field( $parser, $name, $attribs ) {
+@@ -188,7 +188,7 @@
+ 			$this->throwXMLerror( "Expected </$field_str>, got </$name>" );
+ 			return;
+ 		}
+-		xml_set_element_handler( $parser, "in_template", "out_template" );
++		xml_set_element_handler( $parser, [ $this, 'in_template' ], [ $this, 'out_template' ] );
+ 	}
+ 
+ 	function field_value( $parser, $data ) {
+@@ -200,7 +200,7 @@
+ 	}
+ 
+ 	function out_freetext( $parser, $name ) {
+-		xml_set_element_handler( $parser, "in_page", "out_page" );
++		xml_set_element_handler( $parser, [ $this, 'in_page' ], [ $this, 'out_page' ] );
+ 	}
+ 
+ 	function freetext_value( $parser, $data ) {
